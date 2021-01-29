@@ -15,6 +15,7 @@ class CommentController extends ApiController
      */
     public function index()
     {
+        //return all comments
         $comments = Comment::all();
         return $this->showAll($comments);
     }
