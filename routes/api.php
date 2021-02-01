@@ -67,3 +67,8 @@ Route::resource('comments.hearts', 'Comment\CommentHeartController')->only('inde
  */
 Route::resource('hearts', 'Heart\HeartController')->only('index', 'show', 'destroy');
 Route::get('hearts/{heart}/content', 'Heart\HeartController@getContentHearted')->name('hearts.content');
+
+/**
+ * Oauth
+ */
+Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');

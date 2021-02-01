@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends ApiController
 {
+    public function __construct(){
+        parent::__construct();
+    }
     /**
      * Display a listing of the resource.
      *

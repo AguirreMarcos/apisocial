@@ -7,6 +7,7 @@ use App\User;
 use App\Heart;
 use App\Comment;
 use Illuminate\Support\Str;
+use Laravel\Passport\HasApiTokens;
 use App\Transformers\UserTransformer;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,7 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable, SoftDeletes, HasApiTokens;
 
     public $transformer = UserTransformer::class;
 

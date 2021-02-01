@@ -11,6 +11,10 @@ class UserFriendController extends ApiController
 {
     use UserFunctions;
 
+    public function __construct(){
+        parent::__construct();
+    }
+
     /**
      * Display a listing of the resource.
      *
