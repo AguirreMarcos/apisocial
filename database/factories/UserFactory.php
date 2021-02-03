@@ -36,3 +36,22 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
+$factory->state(User::class, 'transformed', function (Faker $faker) {
+
+    static $password;
+
+    return [
+        'user_name' => $faker->name,
+        'user_nickname' => $faker->userName,
+        'user_mail' => $faker->unique()->safeEmail,
+        'email_verified_at' => now(),
+        /* 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password */
+        'password' => $password ?: bcrypt('secret'),
+        'remember_token' => Str::random(10),
+        'is_verified' => $verified = $faker->randomElement([User::USER_VERIFIED, User::USER_NOT_VERIFIED]),
+        'verification_token' => $verified == User::USER_VERIFIED ? null : User::generateVerificationToken(),
+        'is_admin' => $faker->randomElement([User::ADMIN_USER, User::REGULAR_USER]),
+        'user_avatar' => $faker->randomElement(['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg']),
+    ];
+});
+
